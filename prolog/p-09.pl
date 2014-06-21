@@ -9,9 +9,9 @@ split_list([X|T], X, Xs, Ys, AccX, AccY) :-
     split_list(T, X, Xs, Ys, [X|AccX], AccY).
 
 
-pack([], []).
+pack([], []) :- !.
 pack([H|T], Res) :-
-    split_list([H|T], H, Xs, Ys),
+    split_list([H|T], H, Xs, Ys), !,
     pack(Ys, Rt),
     Res = [Xs|Rt].
     

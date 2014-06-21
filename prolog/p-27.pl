@@ -2,7 +2,6 @@
 
 cons(X, Xs, [X|Xs]) :- !.
 
-
 fun(X, Ys, Ans) :-
     maplist(cons(X), Ys, Ans).
 
@@ -19,3 +18,13 @@ group([N|Ns], Xs, Ys) :-
 test(Ns, Xs, Expected) :-
     group(Ns, Xs, Ys),
     length(Ys, Expected).
+
+
+%% ?- test([2,3,4], [a,b,c,d,e,f,g,h,i], 1260).
+%% true.
+
+%% ?- test([2,2,5], [a,b,c,d,e,f,g,h,i], 756).
+%% true.
+
+%% ?- test([2,3,4], [a,b,c,d,e,f,g,h,i], 756).
+%% false.

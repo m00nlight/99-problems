@@ -13,7 +13,5 @@ lfsort xs =
       D.sortBy (\x y -> compare (M.lookup (length x) lf)
                         (M.lookup (length y) lf)) xs
 
-      D
--- testcase
--- *Main Data.List> lfsort ["abc", "de", "fgh", "de", "ijkl", "mn", "o"]
--- ["ijkl","o","abc","fgh","de","de","mn"]
+-- *Main> lfsort ["a", "b", "c", "de", "fg", "ijk"]
+-- ["ijk","de","fg","a","b","c"]
