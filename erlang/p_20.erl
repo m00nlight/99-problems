@@ -4,6 +4,6 @@
 -import(lists, [append/2]).
 
 remove_at(L, N) when N > 0 ->
-    append(take(L, N - 1), drop(L, N));
+    append(take(L, N - 1), drop(L, N)); 
 remove_at(_, N) when N < 0 ->
     erlang:error(negative_index).
