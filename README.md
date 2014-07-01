@@ -16,16 +16,16 @@ The codes under miscellaneous directory is some other test
 code. They're not related to the problems here.
 
 # Status
-* ~~Chapter 01: List~~
-* ~~Chapter 02: List,continued~~
-* ~~Chapter 03: List again~~
-* ~~Chapter 04: Arithmetic~~
-* Chapter 05: Logic and codes
-* Chapter 06: Binary trees
-* Chapter 07: Multiway trees
-* Chapter 08: Graphs
-* Chapter 09: Miscellaneous problems
-* Chapter 10: Miscellaneous problems,continued
++ [X] Chapter 01: List 
++ [X] Chapter 02: List,continued 
++ [X] Chapter 03: List again 
++ [X] Chapter 04: Arithmetic 
++ [ ] Chapter 05: Logic and codes
++ [ ] Chapter 06: Binary trees
++ [ ] Chapter 07: Multiway trees
++ [ ] Chapter 08: Graphs
++ [ ] Chapter 09: Miscellaneous problems
++ [ ] Chapter 10: Miscellaneous problems,continued
 
 # License
 The codes here are distributed under BSD License 3.0 or above.
