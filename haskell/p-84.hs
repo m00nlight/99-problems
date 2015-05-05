@@ -1,7 +1,9 @@
 import qualified Data.Map as M
 import qualified Data.List as L
 
-data Graph a = Graph [a] [(a, a, Int)] deriving (Show, Eq)
+type Weight = Integer
+
+data Graph a b = Graph [a] [(a, a, b)] deriving (Show, Eq)
 
 -- | 'eliminate' return value of a maybe type
 eliminate :: Maybe a -> a
@@ -25,7 +27,7 @@ compressPath uf a = aux ps
 
 
 -- | 'msTree' return the edges of mininum spanning tree of a graph
-msTree :: (Ord a) => Graph a -> [(a, a, Int)]
+msTree :: (Ord a) => Graph a Weight -> [(a, a, Weight)]
 msTree (Graph n e) = kruscal ns es []
     where
       ns = M.fromList $ map (\ x -> (x, x)) n
@@ -34,15 +36,15 @@ msTree (Graph n e) = kruscal ns es []
       kruscal uf ((a,b,w):es') acc =
           let fa = ufFind uf a
               fb = ufFind uf b
-              u1 = compressPath uf a
-              u2 = compressPath u1 b
+              u2 = compressPath (compressPath uf a) b
           in if fa == fb then
                  kruscal u2 es' acc
              else
                  kruscal (M.update (\ _ -> Just fb) fa u2) es'
                          ((a,b,w):acc)
-
+g1 :: Graph Char Weight
 g1 = Graph ['a', 'b', 'c'] [('a', 'b', 1), ('a','c',2),('b','c',3)]
+g2 :: Graph Int Weight
 g2 = Graph [1,2,3,4] [(1,2,1), (2,3,1), (3,4,1), (4,1,1), (1,3,4), (2,4,4)]
 
 main :: IO ()
