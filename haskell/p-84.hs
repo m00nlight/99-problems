@@ -27,7 +27,7 @@ compressPath uf a = aux ps
 
 
 -- | 'msTree' return the edges of mininum spanning tree of a graph
-msTree :: (Ord a) => Graph a Weight -> [(a, a, Weight)]
+msTree :: (Ord a, Ord b, Num b) => Graph a b -> [(a, a, b)]
 msTree (Graph n e) = kruscal ns es []
     where
       ns = M.fromList $ map (\ x -> (x, x)) n
@@ -46,8 +46,18 @@ g1 :: Graph Char Weight
 g1 = Graph ['a', 'b', 'c'] [('a', 'b', 1), ('a','c',2),('b','c',3)]
 g2 :: Graph Int Weight
 g2 = Graph [1,2,3,4] [(1,2,1), (2,3,1), (3,4,1), (4,1,1), (1,3,4), (2,4,4)]
+g3 :: Graph Char Double
+g3 = Graph ['a', 'b', 'c', 'd'] [('a', 'b', sqrt 3), ('b', 'c', sqrt 3),
+                                 ('a', 'c', sqrt 3), ('a', 'd', 1),
+                                 ('b', 'd', 1), ('c', 'd', 1)]
 
 main :: IO ()
 main = do
   putStrLn $ show $ msTree g1
   putStrLn $ show $ msTree g2
+  putStrLn $ show $ msTree g3
+
+-- ~/Documents/github/mine/99-problems/haskell $ runhaskell p-84.hs
+-- [('a','c',2),('a','b',1)]
+-- [(3,4,1),(2,3,1),(1,2,1)]
+-- [('c','d',1.0),('b','d',1.0),('a','d',1.0)]
